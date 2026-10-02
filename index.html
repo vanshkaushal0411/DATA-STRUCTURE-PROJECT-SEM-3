@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoSpace — DSA Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="logo">A<span>↗</span></span><span>ALGOSPACE<small>DSA VISUALIZER</small></span></a>
+  <div class="top-actions"><span class="status"><i></i> SYSTEM READY</span><span class="tag">v2.0</span></div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">INTERACTIVE DATA STRUCTURES LAB</p>
+      <h1>See the algorithm.<br><span>Understand the logic.</span></h1>
+      <p class="lead">A redesigned playground for watching sorting and pathfinding algorithms work in real time.</p>
+    </div>
+    <div class="hero-card"><span>LAB / 02</span><strong>01</strong><small>VISUAL MODULES</small></div>
+  </section>
+
+  <nav class="tabs" aria-label="Visualizer">
+    <button class="tab active" data-target="sorting"><b>01</b> Sorting</button>
+    <button class="tab" data-target="pathfinding"><b>02</b> Pathfinding</button>
+  </nav>
+
+  <section id="sorting" class="module active">
+    <aside class="panel">
+      <div class="panel-title"><span>MODULE 01</span><h2>Sorting Lab</h2><p>Compare values, track moves, and watch an array become ordered.</p></div>
+      <label>Algorithm<select id="sort-algo"><option value="bubble">Bubble Sort</option><option value="selection">Selection Sort</option><option value="insertion">Insertion Sort</option><option value="merge">Merge Sort</option><option value="quick">Quick Sort</option></select></label>
+      <label><div class="label-row"><span>Array size</span><output id="size-val">32</output></div><input id="array-size" type="range" min="10" max="90" value="32"></label>
+      <label><div class="label-row"><span>Speed</span><output id="speed-val">3</output></div><input id="sort-speed" type="range" min="1" max="5" value="3"></label>
+      <div class="actions"><button id="btn-sort" class="primary">▶ Run algorithm</button><button id="btn-generate" class="secondary">⟳ New array</button></div>
+      <div class="metrics"><p>LIVE METRICS</p><div class="metric-grid"><div><span>Comparisons</span><strong id="stat-comparisons">0</strong></div><div><span>Moves</span><strong id="stat-swaps">0</strong></div><div><span>Sorted</span><strong id="stat-sorted">0</strong></div><div><span>Remaining</span><strong id="stat-unsorted">32</strong></div></div></div>
+      <div class="complexity"><p>TIME COMPLEXITY</p><div><span>Best</span><b id="comp-best">O(n)</b></div><div><span>Average</span><b id="comp-avg">O(n²)</b></div><div><span>Worst</span><b id="comp-worst">O(n²)</b></div></div>
+    </aside>
+    <div class="workspace">
+      <div class="work-head"><div><span>LIVE CANVAS</span><h2>Array in motion</h2></div><div class="legend"><i></i> Value <i class="compare"></i> Compare <i class="sorted"></i> Sorted</div></div>
+      <div class="canvas"><div class="axis"><span>HIGH</span><span>INDEX →</span></div><div id="sorting-container"></div><div class="canvas-footer"><span>Each column represents one array value</span><code>ASCENDING / 01</code></div></div>
+      <div class="tip">Tip — change the array size or algorithm before pressing <b>Run algorithm</b>.</div>
+    </div>
+  </section>
+
+  <section id="pathfinding" class="module">
+    <aside class="panel">
+      <div class="panel-title"><span>MODULE 02</span><h2>Pathfinding Lab</h2><p>Draw obstacles and reveal how a search explores a grid.</p></div>
+      <label>Search strategy<select id="path-algo"><option value="bfs">Breadth-First Search</option><option value="dfs">Depth-First Search</option></select></label>
+      <label><div class="label-row"><span>Speed</span><output id="path-speed-val">4</output></div><input id="path-speed" type="range" min="1" max="5" value="4"></label>
+      <div class="actions"><button id="btn-start-path" class="primary">▶ Run search</button><button id="btn-clear-path" class="secondary">Clear trace</button><button id="btn-clear-board" class="ghost">Reset grid</button></div>
+      <div class="metrics"><p>SEARCH METRICS</p><div class="metric-grid two"><div><span>Explored</span><strong id="nodes-explored">0</strong></div><div><span>Path length</span><strong id="path-length">0</strong></div></div></div>
+      <div class="instructions"><p>CONTROLS</p><div><b>S</b> Drag the start node</div><div><b>T</b> Drag the target node</div><div><b>+</b> Click or drag to draw walls</div></div>
+    </aside>
+    <div class="workspace">
+      <div class="work-head"><div><span>GRID CANVAS</span><h2>Find a route</h2></div><div class="legend path-legend"><i class="start"></i> Start <i class="end"></i> Target <i class="wall"></i> Wall <i class="visited"></i> Explored <i class="route"></i> Path</div></div>
+      <div class="grid-card"><div id="grid-container"></div><div class="canvas-footer"><span>Move S/T or paint walls before searching</span><code>4-DIRECTIONAL</code></div></div>
+      <div class="tip">BFS explores layer by layer. DFS follows a branch deeply before backtracking.</div>
+    </div>
+  </section>
+</main>
+<footer><span>ALGOSPACE · DSA VISUALIZER</span><span>BUILD · RUN · UNDERSTAND</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
